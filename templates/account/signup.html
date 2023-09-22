@@ -1,0 +1,174 @@
+{% extends "account/base.html" %}
+
+{% load i18n static %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block inner %}
+
+
+<section class="sign-in-page bg-white">
+  <div class="container-fluid p-0">
+      <div class="row no-gutters">
+          <div class="col-sm-12 text-left" style="height: 1100px; background: url(https://www.youcanseethemilkyway.com/wp-content/uploads/2019/01/australian-outback-1024x451.jpg) no-repeat 0 0; background-size: cover;">
+              <div class="sign-in-from">
+                <div class="row">
+                  <div class="col-sm-12 col-lg-6" style="background: rgba(0, 0, 0, 0.5);">
+                  <h1 class="mb-0">Sign Up</h1>
+                  <form class="signup" id="signup_form" autocomplete="sedrctvghb" method="post" action="{% url 'account_signup' %}">
+                    {% csrf_token %}
+                    {{ form.errors }}
+    
+                    {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                    {% endif %}
+                    <div class="form-group">
+                      <label for="text-field-hero-input">
+                        {% trans "Sponsor ID" %}</label>
+                        <input onkeyup="this.value = this.value.toUpperCase();" type="text" name="referal_code" placeholder="" style="height: 45px;
+    line-height: 45px;
+    background: white;
+    border: 0px solid #d7dbda;
+    font-size: 27px !important;
+    color: black;
+    border-radius: 22px;
+    padding-left: 37px;
+    font-weight: 600;" class="form-control mb-0" id="id_username" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                      <label for="text-field-hero-input">
+                         {% trans "Sponsor Name" %}</label>
+                        <input type="text" minlength="1" maxlength="150" style="height: 45px;
+    line-height: 45px;
+    background: white;
+    border: 0px solid #d7dbda;
+    font-size: 27px !important;
+    color: black;
+    border-radius: 22px;
+    padding-left: 37px;
+    font-weight: 600;" class="form-control mb-0" id="user_name" readonly="">
+                    </div>
+                    <div class="form-group">
+                      <label for="text-field-hero-input"> {% trans "Full Name" %}</label>
+                        <input onkeyup="this.value = this.value.toUpperCase();" autocomplete="sedrctvghb" type="text" name="name" minlength="1" maxlength="150" style="height: 45px;
+    line-height: 45px;
+    background: white;
+    border: 0px solid #d7dbda;
+    font-size: 27px !important;
+    color: black;
+    border-radius: 22px;
+    padding-left: 37px;
+    font-weight: 600;" class="form-control mb-0" id="text-field-hero-input" autocomplete="sedrctvghb">
+                    </div>
+                    <div class="form-group">
+                      <label for="text-field-hero-input"> {% trans "Mobile" %}</label>
+                        <input default="+91" autocomplete="sedrctvghb" type="text" name="mobile" minlength="1" maxlength="150" style="height: 45px;
+    line-height: 45px;
+    background: white;
+    border: 0px solid #d7dbda;
+    font-size: 27px !important;
+    color: black;
+    border-radius: 22px;
+    padding-left: 37px;
+    font-weight: 600;" class="form-control mb-0" id="text-field-hero-input" autocomplete="sedrctvghb">
+                    </div>
+                    <div class="form-group">
+                      <label for="text-field-hero-input"> {% trans "Email ID" %}</label>
+                        <input autocomplete="sedrctvghb" type="email" name="email" placeholder="" style="height: 45px;
+    line-height: 45px;
+    background: white;
+    border: 0px solid #d7dbda;
+    font-size: 27px !important;
+    color: black;
+    border-radius: 22px;
+    padding-left: 37px;
+    font-weight: 600;" class="form-control mb-0" id="text-field-hero-input">
+                    </div>
+                    <input type="hidden" name="username" value="13wsdfgrfcvf">
+                    <input type="hidden" name="{{ redirect_field_name }}" value="/signup/onboarding/" />
+                    <div class="form-group">
+                      <label for="text-field-hero-input">
+                      {% trans "Create Password" %}</label>
+                        <input  autocomplete="sedrctvghb" type="text" placeholder="Enter 6 digit password" name="password1" style="height: 45px;
+    line-height: 45px;
+    background: white;
+    border: 0px solid #d7dbda;
+    font-size: 27px !important;
+    color: black;
+    border-radius: 22px;
+    padding-left: 37px;
+    font-weight: 600;" class="form-control mb-0" id="text-field-hero-input">
+                    </div>
+                    <div class="form-group">
+                      <label for="text-field-hero-input">{% trans "Confirm Password" %}</label>
+                        <input autocomplete="sedrctvghb" name="password2" style="height: 45px;
+    line-height: 45px;
+    background: white;
+    border: 0px solid #d7dbda;
+    font-size: 27px !important;
+    color: black;
+    border-radius: 22px;
+    padding-left: 37px;
+    font-weight: 600;" class="form-control mb-0" type="password" id="text-field-hero-input">
+                    </div>
+                      <div class="d-inline-block w-100">
+                          <div class="custom-control custom-checkbox d-inline-block mt-2 pt-1">
+                              <input autocomplete="sedrctvghb" type="checkbox"
+                              id="checkbox-1" class="custom-control-input" id="customCheck1">
+                              <label class="custom-control-label" for="customCheck1">I accept <a href="/terms"><strong>{% trans "Terms & Conditions" %}</strong> </a>.</label>
+                          </div>
+                          <label>{% trans "Already have an account?" %} <a href="/accounts/login/"><strong>{% trans "login" %}</strong></a>  {% trans "here." %}</label>
+                          <button type="submit" class="btn btn-primary float-right">Sign Up</button>
+                      </div>
+                      <div class="sign-info">
+                          <span class="dark-color d-inline-block line-height-2">Don't have an account? <a href="#">Sign up</a>
+                          <ul class="iq-social-media">
+                              <li><a href="#"><i class="ri-facebook-box-line"></i></a></li>
+                              <li><a href="#"><i class="ri-twitter-line"></i></a></li>
+                              <li><a href="#"><i class="ri-instagram-line"></i></a></li>
+                          </ul>
+                      </div>
+                  </form>
+              </div>
+          </div>
+          </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+          <script>
+              $("#id_username").change(function () {
+                var username = $(this).val();
+
+                $.ajax({
+                  url: '/users/ajax/validate_username/',
+                  data: {
+                    'username': username
+                  },
+                  dataType: 'json',
+                  success: function (data) {
+                    if (true) {
+                      document.getElementById("user_name").value = data.is_taken;
+                    }
+                  }
+                });
+
+              });
+            </script>
+          {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+          

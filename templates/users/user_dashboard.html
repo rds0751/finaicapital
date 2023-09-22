@@ -1,0 +1,397 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% block title %}{% trans 'Dashboard' %}{% endblock %}
+{% load sum_tags %}
+{% block content %}
+
+<div class="row">
+  <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
+    <div class="card border-0 mb-4 theme-green bg-radial-gradient text-white">
+        <div style="height: 103px;" class="card-body bg-none">
+            <div class="row gx-2 align-items-center">
+                <div class="col-auto">
+                  <div class="rounded-circle iq-card-icon iq-bg-danger"><i class="ri-exchange-dollar-fill"></i></div>
+                </div>
+                <div class="col">
+                    <h5 style="font-size: small;" class="text-muted  mb-1">Total Income</h5>
+                    <h5 class="">$ {{ request.user.total_income }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
+      <div class="card border-0 mb-4 theme-blue bg-radial-gradient text-white">
+          <div style="height: 103px;" class="card-body bg-none">
+              <div class="row gx-2 align-items-center">
+                  <div class="col-auto">
+                    <div class="rounded-circle iq-card-icon iq-bg-primary"><i class="ri-group-line"></i></div>
+                  </div>
+                  <div class="col">
+                      <h5 style="font-size: small;" class="text-muted  mb-1">My Team</p>
+                      <h5>{{all}}</h5>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
+      <div class="card border-0 mb-4 theme-green bg-radial-gradient text-white">
+          <div style="height: 103px;" class="card-body bg-none">
+              <div class="row gx-2 align-items-center">
+                  <div class="col-auto">
+                    <div class="rounded-circle iq-card-icon iq-bg-warning"><i class="ri-bar-chart-grouped-line"></i></div>
+                  </div>
+                  <div class="col">
+                      <h5 style="font-size: small;" class="text-muted  mb-1">My Directs</p>
+                      <h5>{{ directs }}</h5>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
+      <div class="card border-0 mb-4 theme-blue bg-radial-gradient text-white">
+          <div style="height: 103px;" class="card-body bg-none">
+              <div class="row gx-2 align-items-center">
+                  <div class="col-auto">
+                    <div class="rounded-circle iq-card-icon iq-bg-success"><i class="ri-exchange-dollar-fill"></i></div>
+                  </div>
+                  <div class="col">
+                      <h5 style="font-size: small;" class="text-muted  mb-1">Wallet</h5>
+                      <h5 class="">$ {{request.user.wallet}}</h5>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+<div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
+    <div class="card border-0 mb-4 theme-blue bg-radial-gradient text-white">
+        <div style="height: 103px;" class="card-body bg-none">
+            <div class="row gx-2 align-items-center">
+                <div class="col-auto">
+                  <div class="rounded-circle iq-card-icon iq-bg-danger"><i class="ri-exchange-dollar-fill"></i></div>
+                </div>
+                <div class="col">
+                    <h5 style="font-size: small;" class="text-muted  mb-1">Today Income</h5>
+                    <h5 class="">$ {{request.user.today_income}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
+    <div class="card border-0 mb-4 theme-green bg-radial-gradient text-white">
+        <div style="height: 103px;" class="card-body bg-none">
+            <div class="row gx-2 align-items-center">
+                <div class="col-auto">
+                  <div class="rounded-circle iq-card-icon iq-bg-warning"><i class="ri-exchange-dollar-fill"></i></div>
+                </div>
+                <div class="col">
+                    <h5 style="font-size: small;" class="text-muted  mb-1">Total Business</h5>
+                    <h5 class="">$ {{ request.user.total_business }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-6 col-sm-12 col-md-6 col-lg-3 col-xxl-2">
+    <div class="card border-0 mb-4 theme-blue bg-radial-gradient text-white">
+        <div style="height: 103px;" class="card-body bg-none">
+            <div class="row gx-2 align-items-center">
+                <div class="col-auto">
+                  <div class="rounded-circle iq-card-icon iq-bg-success"><i class="ri-exchange-dollar-fill"></i></div>
+                </div>
+                <div class="col">
+                    <h5 style="font-size: small;" class="text-muted   mb-1">My Income</h5>
+                    <h5 class="">$ {{request.user.rewards}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-6 col-lg-6 col-xl-6 col-xxl-6">
+  <div class="card bg-gradient-theme-light theme-purple border-0 mb-4">
+      <div class="card-body">
+          <h6 class="">My Refer Link</h6>
+          <p class="text-secondary">https://voxafx.com/register/{{ request.user.username }}</p>
+          <input type="input" style="display: none; width:20px; position:absolute; z-index: -100 !important;" value="https:/voxafx.com/register/{{ user.username }}" id="copy-to-clipboard-input">
+      </div>
+      <div class="card-footer text-center">
+          <a onclick="myyFunction()" class="btn btn-success">Copy</a>
+          <a href="whatsapp://send?text=https://voxafx.com/register/{{ user.username }}" class="btn btn-danger">Share</a>
+      </div>
+  </div>
+</div>
+<div class="col-lg-8">
+   <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
+      <div class="iq-card-header d-flex justify-content-between">
+         <div class="iq-header-title">
+            <h4 class="card-title">Top Charts</h4>
+         </div>
+         <div class="iq-card-header-toolbar d-flex align-items-center">
+         </div>
+      </div>
+      <!-- TradingView Widget BEGIN -->
+      <div class="tradingview-widget-container">
+         <div class="tradingview-widget-container__widget"></div>
+         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+            {
+            "symbols": [
+              [
+                "FX:EURUSD|1D"
+              ],
+              [
+                "FX:USDJPY|1D"
+              ],
+              [
+                "FX:USDCHF|1D"
+              ],
+              [
+                "FX:EURJPY|1D"
+              ],
+              [
+                "OANDA:USDCHF|1D"
+              ],
+              [
+                "OANDA:CADJPY|1D"
+              ],
+              [
+                "FX:AUDCHF|1D"
+              ],
+              [
+                "FXOPEN:XAUUSD|1D"
+              ],
+              [
+                "FX:AUDUSD|1D"
+              ]
+            ],
+            "chartOnly": false,
+            "width": "100%",
+            "height": 600,
+            "locale": "in",
+            "colorTheme": "dark",
+            "isTransparent": true,
+            "autosize": true,
+            "showVolume": true,
+            "showMA": true,
+            "hideDateRanges": false,
+            "hideMarketStatus": false,
+            "hideSymbolLogo": false,
+            "scalePosition": "right",
+            "scaleMode": "Normal",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+            "fontSize": "10",
+            "noTimeScale": false,
+            "valuesTracking": "1",
+            "changeMode": "price-and-percent",
+            "chartType": "candle",
+            "maLineColor": "#ffffff",
+            "maLineWidth": 1,
+            "maLength": 9,
+            "lineWidth": 2,
+            "lineType": 0,
+            "dateRanges": [
+              "1d|1",
+              "1m|30",
+              "3m|60",
+              "12m|1D",
+              "60m|1W",
+              "all|1M"
+            ]
+            }
+         </script>
+      </div>
+   </div>
+</div>
+<div class="col-lg-4">
+   <div class="iq-card">
+      <div class="iq-card-header d-flex justify-content-between">
+         <div class="iq-header-title">
+            <h4 class="card-title">Forex News</h4>
+         </div>
+      </div>
+      <div class="tradingview-widget-container">
+         <div class="tradingview-widget-container__widget"></div>
+         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+            {
+            "feedMode": "all_symbols",
+            "colorTheme": "dark",
+            "isTransparent": true,
+            "displayMode": "regular",
+            "width": "100%",
+            "height": "600",
+            "locale": "in"
+            }
+         </script>
+      </div>
+   </div>
+</div>
+</div>
+<script>
+  function myyFunction() {
+    var copyText = document.getElementById("copy-to-clipboard-input");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+    alert("Copied the link: " + copyText.value);
+  }
+  </script>
+
+<!-- 
+    <div class="main-wrapper mdc-drawer-app-content">
+      <div class="page-wrapper mdc-toolbar-fixed-adjust">
+        <main style="background: white; padding-top: 0" class="content-wrapper">
+          <div class="mdc-layout-grid">
+            <div class="mdc-layout-grid__inner">
+              <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+                <div class="mdc-card text-white info-card info-card--danger" style="background: #14bbce;">
+                  <div style="margin-right: 0%" class="card-inner">
+                    <h5 class="card-title"><strong>{% trans "Traditional Income" %} </strong> </h5>
+                    <h5 style="" class="font-weight-light pb-2 mb-1">$ {{ ret|floatformat:2 }}</h5>
+                    <p class="tx-10">Paid: {{ request.user.traditional_withdrawal|floatformat:2 }}</p>
+                </div>
+              </div>
+            </div>
+         <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+          <div class="mdc-card text-white info-card info-card--danger" style=" background: #333333;">
+            <div class="card-inner">
+              <h5 style="" class="card-title"><strong> {% trans "Wallet Balance" %} </strong> </h5>
+              <h5 style="" class="font-weight-light pb-2 mb-1">$ {{ request.user.wallet|add:request.user.c|floatformat:2 }}</h5>
+              <p style="line-height: 1" class="tx-10">Payable $ {{ request.user.wallet|floatformat:2 }} <br/> Paid $ {{ request.user.withdrawal|floatformat:2 }}</p>
+              <p style="line-height: 1" class="tx-10">Service $ {{ request.user.c }}</p>
+              <div style="background: transparent; box-shadow: 0 0 10px 5px rgb(255 66 15 / 0%);" class="card-icon-wrapper">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+          <div style="background-color: #14bbce;" class="mdc-card text-white info-card info-card--danger">
+            <div>
+              <h5 style="" class="card-title"><strong>{% trans "My Package" %} </strong> </h5>
+              <h5 style="" class="font-weight-light pb-2 mb-1">{% if amount != 'None' %}$ {{ amount.level.amount }}{% endif %}</h5>
+              {% if amount.ccm_ends != 'gone' and amount.ccm_ends != 'not active' %}<p style="line-height: 1" class="tx-10">{{ amount.ccm_ends|timeuntil }} left to be CCM</p>{% endif %}
+              {% if amount.plan_ends != 'gone' and amount.plan_ends != 'not active' %}<p style="line-height: 1" class="tx-10">{{ amount.plan_ends|timeuntil }} left in current Plan</p>{% endif %}
+          </div> 
+        </div> 
+      </div>
+      <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+          <div class="mdc-card text-white info-card info-card--danger" style="background: #333333;">
+            <div class="card-inner">
+              <h5 style="" class="card-title"><strong>{% trans "Total Business" %} </strong> </h5>
+              <h5 style="" class="font-weight-light pb-2 mb-1"  id="tot_lev">{% if amount != 'None' %}$ {{ business.1|add:business.2|add:business.3|add:business.4|add:business.5|add:business.6|add:business.7|add:business.8 }}{% endif %}</h5>
+          </div>
+        </div>
+      </div>
+      <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+          <div class="mdc-card bg-warning text-white info-card info-card--danger">
+            <div class="card-inner">
+              <h5 style="" class="card-title"><strong>Total Shopping Income </strong> </h5>
+              <h5 style="" class="font-weight-light pb-2 mb-1" id="tot_shop">$ 0</h5>
+          </div>
+        </div>
+      </div>
+      <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+          <div class="mdc-card bg-secondary text-white info-card info-card--danger">
+            <div class="card-inner">
+              <h5 style="" class="card-title"><strong>Total Shopping Team </strong> </h5>
+              <h5 style="" class="font-weight-light pb-2 mb-1">0</h5>
+          </div>
+        </div>
+      </div>
+      <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+          <div class="mdc-card bg-primary text-white info-card info-card--danger">
+            <div class="card-inner">
+              <h5 style="" class="card-title"><strong>Total Prime Earnings </strong> </h5>
+              <h5 style="" class="font-weight-light pb-2 mb-1">$ 00.00</h5>
+          </div>
+        </div>
+      </div>
+      <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+          <div class="mdc-card bg-warning text-white info-card info-card--danger">
+            <div class="card-inner">
+              <h5 style="" class="card-title"><strong>Total Prime Team </strong> </h5>
+              <h5 style="" class="font-weight-light pb-2 mb-1">00</h5>
+          </div>
+        </div>
+      </div>
+      
+    <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+      <div class="mdc-card bg-success text-white info-card info-card--success">
+        <div class="card-inner">
+          <h5 style="" class="card-title"><strong>Today's Earning</strong> </h5>
+          <h5 style="" class="font-weight-light pb-2 mb-1"> $ {{ user.today_binary_income }}</h5>
+          <p style="line-height: 1" class="tx-10">Will be updated in <span id='time'></span>!</p>
+          <div class="card-icon-wrapper" style="background-color: #ffffff;
+          box-shadow: 0 0 10px 5px rgb(255 255 255 / 35%);">
+          <img width="60px;" src="https://img.icons8.com/cute-clipart/64/000000/economic-improvement.png"/>
+        </div> 
+      </div>
+    </div>
+    </div>
+    
+    <div style="height: 140px;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+      <div class="mdc-card bg-success text-white info-card info-card--info">
+        <div class="card-inner">
+          <h5 style="" class="card-title"><strong> Prime User</strong> </h5>
+          <h5 style="" class="font-weight-light pb-2 mb-1"> $ {{ amount }}</h5>
+          <p style="line-height: 1" class="tx-10">Weekly Capping : ${{ capping_limit }}</p>
+          <div class="card-icon-wrapper" style="background-color: #ffffff;
+          box-shadow: 0 0 10px 5px rgb(255 255 255 / 35%);">
+          <img width="60px" src="https://img.icons8.com/fluent/96/000000/office.png"/>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet">
+      <div class="mdc-card bg-white text-white">
+        <div class="d-flex justify-content-between">
+          <h3 style="color: black; font-size: 20px" >Recent transactions</h3><br>
+          <p style="line-height: 1" class="tx-10"></p>
+        </div>
+        <div style="overflow-x: visible;" class="table-responsive">
+          <table class="table dashboard-table">
+            <tbody>
+              {% for r in recent %}
+              {% if r.type == 'hidden' %}
+              {% else %}
+              <tr>
+                <td style="padding-top: 20px; font-size: 12px;">{{r.comment}}<p style="color: grey; font-size: 8px;">{{r.created_at}}
+                  <span style="{% if r.type == 'credit' %}color: green;{% else %}color: red;{% endif %} font-size: 12px; float: right;" ><strong>{% if r.type == 'credit' %}+{% else %}-{% endif %}  ${{r.amount|floatformat:2}}</strong></span></p></td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet">
+      <div class="mdc-card bg-white text-white">
+        <div class="d-flex justify-content-between">
+          <h3 style="color: black; font-size: 20px" >Large transactions</h3><br>
+          <p style="line-height: 1" class="tx-10"></p>
+        </div>
+        <div style="overflow-x: visible;" class="table-responsive">
+          <table class="table dashboard-table">
+            <tbody>
+              {% for r in large %}
+              {% if r.type == 'hidden' %}
+              {% else %}
+              <tr>
+                <td style="padding-top: 20px; font-size: 12px;">{{r.comment}}<p style="color: grey; font-size: 8px;">{{r.created_at}}
+                  <span style="{% if r.type == 'credit' %}color: green;{% else %}color: red;{% endif %} font-size: 12px; float: right;" ><strong>{% if r.type == 'credit' %}+{% else %}-{% endif %}  ${{r.amount|floatformat:2}}</strong></span></p></td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </main>
+    </div>
+    </div> -->
+    {% endblock content %}

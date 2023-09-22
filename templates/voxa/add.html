@@ -1,0 +1,30 @@
+{% extends "users/base.html" %}
+{% load static i18n %}
+{% block title %}{% trans 'Dashboard' %}{% endblock %}
+{% load sum_tags %}
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-12 col-lg-6">
+       <div class="iq-card">
+          <div class="iq-card-header d-flex justify-content-between">
+             <div class="iq-header-title">
+                <h4 class="card-title">Add Funds</h4>
+             </div>
+          </div>
+          <div class="iq-card-body">
+             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
+             <form>
+                <div class="form-group">
+                   <label for="email">Amount</label>
+                   <input type="email" class="form-control" id="email1">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn iq-bg-danger">cancle</button>
+             </form>
+          </div>
+       </div>
+    </div>
+ </div>
+
+{% endblock %}

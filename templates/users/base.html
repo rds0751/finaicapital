@@ -1,0 +1,116 @@
+{% load static i18n %} 
+<!doctype html>
+<html lang="en">
+   <!-- Mirrored from templates.iqonic.design/VoxaFx-admin/VoxaFx-dashboard-html/soft-ui-dark/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 09 Sep 2023 12:26:51 GMT -->
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>VoxaFx</title>
+      {% block css %}
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="{% static 'voxa/images/favicon.ico' %}" />
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="{% static 'voxa/css/bootstrap.min.css' %}">
+      <!-- Typography CSS -->
+      <link rel="stylesheet" href="{% static 'voxa/css/typography.css' %}">
+      <!-- Style CSS -->
+      <link rel="stylesheet" href="{% static 'voxa/css/style.css' %}">
+      <!-- Responsive CSS -->
+      <link rel="stylesheet" href="{% static 'voxa/css/responsive.css' %}">
+      {% endblock css %}
+      {% block head %}{% endblock head %}
+   </head>
+   <body>
+      {% block body %}
+      <!-- loader Start -->
+      <div id="loading">
+         <div id="loading-center">
+            <div class="loader">
+               <div class="cube">
+                  <div class="sides">
+                     <div class="top"></div>
+                     <div class="right"></div>
+                     <div class="bottom"></div>
+                     <div class="left"></div>
+                     <div class="front"></div>
+                     <div class="back"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- loader END -->
+      <!-- Wrapper Start -->
+      <div class="wrapper">
+         {% if request.user.is_authenticated %}
+         {% include 'partial.html' %}              
+         {% endif %}
+         {% block wrapper %}
+         <!-- TOP Nav Bar END -->
+         <!-- Page Content  -->
+         <div id="content-page" class="content-page">
+            <div class="container-fluid">
+               {% block content %}
+               {% endblock content %}
+            </div>
+         </div>
+      </div>
+      {% endblock wrapper %}
+      <!-- Wrapper END -->
+      <!-- Footer -->
+      <footer class="bg-white iq-footer">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-lg-6">
+                  <ul class="list-inline mb-0">
+                     <li class="list-inline-item"><a href="">Privacy Policy</a></li>
+                     <li class="list-inline-item"><a href="">Terms of Use</a></li>
+                  </ul>
+               </div>
+               <div class="col-lg-6 text-right">
+                  Copyright 2023 <a href="#">VoxaFx</a> All Rights Reserved.
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!-- Footer END -->
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      {% block javascript %}
+      <script src="{% static 'voxa/js/jquery.min.js' %}"></script>
+      <script src="{% static 'voxa/js/popper.min.js' %}"></script>
+      <script src="{% static 'voxa/js/bootstrap.min.js' %}"></script>
+      <!-- Appear JavaScript -->
+      <script src="{% static 'voxa/js/jquery.appear.js' %}"></script>
+      <!-- Countdown JavaScript -->
+      <script src="{% static 'voxa/js/countdown.min.js' %}"></script>
+      <!-- Counterup JavaScript -->
+      <script src="{% static 'voxa/js/waypoints.min.js' %}"></script>
+      <script src="{% static 'voxa/js/jquery.counterup.min.js' %}"></script>
+      <!-- Wow JavaScript -->
+      <script src="{% static 'voxa/js/wow.min.js' %}"></script>
+      <!-- Apexcharts JavaScript -->
+      <script src="{% static 'voxa/js/apexcharts.js' %}"></script>
+      <!-- Slick JavaScript -->
+      <script src="{% static 'voxa/js/slick.min.js' %}"></script>
+      <!-- Select2 JavaScript -->
+      <script src="{% static 'voxa/js/select2.min.js' %}"></script>
+      <!-- Owl Carousel JavaScript -->
+      <script src="{% static 'voxa/js/owl.carousel.min.js' %}"></script>
+      <!-- Magnific Popup JavaScript -->
+      <script src="{% static 'voxa/js/jquery.magnific-popup.min.js' %}"></script>
+      <!-- Smooth Scrollbar JavaScript -->
+      <script src="{% static 'voxa/js/smooth-scrollbar.js' %}"></script>
+      <!-- lottie JavaScript -->
+      <script src="{% static 'voxa/js/lottie.js' %}"></script>
+      <!-- Chart Custom JavaScript -->
+      <script src="{% static 'voxa/js/chart-custom.js' %}"></script>
+      <!-- Custom JavaScript -->
+      <script src="{% static 'voxa/js/custom.js' %}"></script>
+      {% endblock javascript %}
+      {% block modal %}
+      {% endblock modal %}
+      {% endblock body %}
+   </body>
+</html>
