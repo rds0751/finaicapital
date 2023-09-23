@@ -47,7 +47,7 @@ class SimpleSignupForm(SignupForm):
 			referral = 'VOXA111111'
 		plan = UserTotal()
 		plan.user = user
-		plan.level = LevelIncomeSettings.objects.get(id=9)
+		plan.level = LevelIncomeSettings.objects.get(id=1)
 		plan.active = False
 		plan.left_months = 0
 		plan.direct = referral
