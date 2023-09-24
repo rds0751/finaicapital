@@ -111,28 +111,62 @@
                             <div class="form-group">
                               <label for="exampleFormControlSelect1">Select Package</label>
                               <select class="form-control" name="amount" id="exampleFormControlSelect1">
-                                 <option disabled="">Select your Package</option>
-                                 {% for package in packages %}
-                                    <option style="justify-content: space-around;
-    letter-spacing: 1px;
-    font-size: 18px;
-    font-weight: 500;
-    font-family: sans-serif;" value="{{ package.amount }}">{{package.amount}}</option>
-                                  {% endfor %}
-                              </select>
+                                <option disabled="">Select your Package</option>
+                                {% for package in packages %}
+                                   <option style="justify-content: space-around;
+   letter-spacing: 1px;
+   font-size: 18px;
+   font-weight: 500;
+   font-family: sans-serif;" value="{{ package.amount }}">{{package.amount}}</option>
+                                 {% endfor %}
+                             </select>
+                             <div class="form-group">
+                               <label for="exampleFormControlSelect1">Select Method</label>
+                             <select class="form-control" name="type" id="imageSelector">
+                              <option disabled="">Select Method</option>
+                              <option style="justify-content: space-around;
+                              letter-spacing: 1px;
+                              font-size: 18px;
+                              font-weight: 500;
+                              font-family: sans-serif;" value="17wWUytNJ5CNPDUiMmZXmFPrgV7MDjdZhV">Bitcoin</option>
+                              <option style="justify-content: space-around;
+                              letter-spacing: 1px;
+                              font-size: 18px;
+                              font-weight: 500;
+                              font-family: sans-serif;" value="TBuPtNR8KrwSotfzkoS79GdJqi57UFhyPE">Tron</option>
+                              <option style="justify-content: space-around;
+                              letter-spacing: 1px;
+                              font-size: 18px;
+                              font-weight: 500;
+                              font-family: sans-serif;" value="0x907ab767a508694f379e9d6a0ed627bd46408286">USDT ERC20</option>
+                              <option style="justify-content: space-around;
+                              letter-spacing: 1px;
+                              font-size: 18px;
+                              font-weight: 500;
+                              font-family: sans-serif;" value="0x907ab767a508694f379e9d6a0ed627bd46408286">USDT BEP20</option>
+                              <option style="justify-content: space-around;
+                              letter-spacing: 1px;
+                              font-size: 18px;
+                              font-weight: 500;
+                              font-family: sans-serif;" value="TBuPtNR8KrwSotfzkoS79GdJqi57UFhyPE">USDT TRC20</option>
+                           </select>
+                           </div>
+                           
+                           <img id="displayedImage" src="0xdEe1d2e52cfd28d851229A06cfE428E356044059&choe=UTF-8" style="width: 150px;">
+                           <p id="imageDescription"></p>
                            </div>
                             <br>
                           <div style="width: 80%; margin-bottom: 10%;" class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
-                          <input type="hidden" value='' required name="type">
+                          <input type="hidden" value='cash' required name="type">
                             <i class="mdc-select__dropdown-icon"></i>
                             <div class="mdc-select__selected-text"></div>
-                            <div class="mdc-select__menu mdc-menu-surface demo-width-class">
+                            <!-- <div class="mdc-select__menu mdc-menu-surface demo-width-class">
                               <ul class="mdc-list">
                                 <li class="mdc-list-item mdc-list-item--selected" data-value="online" aria-selected="true">Pay by Service Balance
                                 </li>
                                 <li class="mdc-list-item" data-value="cash">Pay in Cash</li>
-                              </ul>
-                            </div>
+                              </ul> -->
+                            <!-- </div> -->
                             <span class="mdc-floating-label">Select Payment Type</span>
                             <div class="mdc-line-ripple"></div>
                           </div>
@@ -186,6 +220,29 @@ $('.options li').click(function(){
   $('.faux-select').attr('data-selected-value',dataValue);
   $('input.amount').val(dataValue);
 });
+</script>
+<script>
+  // Get references to the select, image, and paragraph elements
+  const imageSelector = document.getElementById("imageSelector");
+  const displayedImage = document.getElementById("displayedImage");
+  const imageDescription = document.getElementById("imageDescription");
+
+  // Add an event listener to the select element
+  imageSelector.addEventListener("change", function() {
+      // Get the selected option's value
+      const selectedOption = imageSelector.value;
+
+      // Set the src attribute of the image to the selected option's value
+      displayedImage.src = `https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=${selectedOption}`;
+
+      // Set the paragraph's text to display the selected option's value
+      imageDescription.textContent = `${selectedOption}`;
+  });
+
+  // Initialize the image and paragraph based on the initial select option
+  const initialOption = imageSelector.value;
+  displayedImage.src = `https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=${initialOption}`;
+  imageDescription.textContent = `${initialOption}`;
 </script>
 {% endblock content %}
 
