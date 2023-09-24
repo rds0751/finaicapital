@@ -20,13 +20,16 @@
                 <ul id="iq-sidebar-toggle" class="iq-menu">
                    <li class="iq-menu-title"><i class="ri-separator"></i><span>Main</span></li>
                    <li class="active">
-                      <a href="/users/"><i class="ri-home-4-line"></i><span>Dashboard</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                      <a href="/users/"><i class="ri-home-4-line"></i><span>Dashboard</span></a>
+                   </li>
+                   <li>
+                      <a href="/level/team/{{request.user.username}}/0/"><i class="ri-home-4-line"></i><span>My Network</span></a>
                    </li>
                    <li>
                     
                       <a href="#user-info" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-user-line"></i><span>User</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                       <ul id="user-info" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                         <li><a href="/users/~profile/">User Profile</a></li>
+                         <li><a href="/users/profile/">User Profile</a></li>
                          <li><a href="/users/~update/">User Edit</a></li>
                          <li><a href="/kyc/pancard/">KYC</a></li>
                         
@@ -181,7 +184,7 @@
                                   <h5 class="mb-0 text-white line-height">Hello {{ request.user.name }}</h5>
                                   <span class="text-white font-size-12">Available</span>
                                </div>
-                               <a href="profile.html" class="iq-sub-card iq-bg-primary-hover">
+                               <a href="/users/profile/" class="iq-sub-card iq-bg-primary-hover">
                                   <div class="media align-items-center">
                                      <div class="rounded iq-card-icon iq-bg-primary">
                                         <i class="ri-file-user-line"></i>
@@ -192,7 +195,7 @@
                                      </div>
                                   </div>
                                </a>
-                               <a href="profile-edit.html" class="iq-sub-card iq-bg-primary-success-hover">
+                               <a href="/users/~update/" class="iq-sub-card iq-bg-primary-success-hover">
                                   <div class="media align-items-center">
                                      <div class="rounded iq-card-icon iq-bg-success">
                                         <i class="ri-profile-line"></i>
@@ -200,17 +203,6 @@
                                      <div class="media-body ml-3">
                                         <h6 class="mb-0 ">Edit Profile</h6>
                                         <p class="mb-0 font-size-12">Modify your personal details.</p>
-                                     </div>
-                                  </div>
-                               </a>
-                               <a href="account-setting.html" class="iq-sub-card iq-bg-primary-danger-hover">
-                                  <div class="media align-items-center">
-                                     <div class="rounded iq-card-icon iq-bg-danger">
-                                        <i class="ri-account-box-line"></i>
-                                     </div>
-                                     <div class="media-body ml-3">
-                                        <h6 class="mb-0 ">Account settings</h6>
-                                        <p class="mb-0 font-size-12">Manage your account parameters.</p>
                                      </div>
                                   </div>
                                </a>
