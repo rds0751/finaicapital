@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^fund/', views.fund, name='fund'),
     url(r'^level/', views.level, name='level'),
     url(r'^mt4/', views.mt4, name='mt4'),
+    url(r'^loss/', views.loss, name='loss'),
     url(r'^package/', views.package, name='package'),
     url(r'^profit/', views.profit, name='profit'),
     url(r'^reward/', views.reward, name='reward'),

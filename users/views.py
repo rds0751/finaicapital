@@ -179,6 +179,9 @@ def level(request):
 def mt4(request):
     return render(request, 'voxa/mt4.html', {})
     
+def loss(request):
+    return render(request, 'voxa/loss.html', {})
+    
 def package(request):
     return render(request, 'voxa/package.html', {})
     
