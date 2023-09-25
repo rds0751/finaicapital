@@ -315,11 +315,13 @@ def activate(user, amount):
             'level1': 20/100, 
             'level2': 10/100,
             'level3': 8/100,
-            'level4': 6/100,
-            'level5': 4/100,
-            'level6': 2/100,
+            'level4': 8/100,
+            'level5': 6/100,
+            'level6': 5/100,
             'level7': 2/100,
-            'level8': 8/100,
+            'level8': 1/100,
+            'level9': 0.5/100,
+            'level10': 0.5/100,
             }
 
             level = 0   
