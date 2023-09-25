@@ -12,7 +12,7 @@ from django.urls import reverse
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView, FormView, CreateView
 from django.shortcuts import render, redirect
 from users.models import User
-from .models import Activation, LevelIncomeSettings, UserTotal
+from .models import Activation, LevelIncomeSettings, UserTotal, LevelUser
 from django.contrib.auth.decorators import login_required
 from wallets.models import WalletHistory, MetatraderAccount
 from django.core.paginator import Paginator
@@ -39,67 +39,149 @@ def leveltree(request, user, level):
     lll = level
     user = User.objects.get(username=user)
     try:
-        s = UserTotal.objects.get(user=user.username)
+        s = LevelUser.objects.get(user=user.username)
     except Exception as e:
         s = e
-    directs = UserTotal.objects.filter(direct=user, active=True).count()
-    level1 = UserTotal.objects.filter(direct=user.username).order_by('id')
+    directs = LevelUser.objects.filter(direct=user, active=True).count()
+    level1 = LevelUser.objects.filter(direct=user.username).order_by('id')
     level1n = []
     for x in level1:
         level1n.append(x)
     level2n = []
     for y in level1n:
-        level2 = UserTotal.objects.filter(direct=y).order_by('id')
+        level2 = LevelUser.objects.filter(direct=y).order_by('id')
         for z in level2:
             level2n.append(z)
     level3n = []
     for y in level2n:
-        level3 = UserTotal.objects.filter(direct=y).order_by('id')
+        level3 = LevelUser.objects.filter(direct=y).order_by('id')
         for z in level3:
             level3n.append(z)
     level4n = []
     for y in level3n:
-        level4 = UserTotal.objects.filter(direct=y).order_by('id')
+        level4 = LevelUser.objects.filter(direct=y).order_by('id')
         for z in level4:
             level4n.append(z)
     level5n = []
     for y in level4n:
-        level5 = UserTotal.objects.filter(direct=y).order_by('id')
+        level5 = LevelUser.objects.filter(direct=y).order_by('id')
         for z in level5:
             level5n.append(z)
     level6n = []
     for y in level5n:
-        level6 = UserTotal.objects.filter(direct=y).order_by('id')
+        level6 = LevelUser.objects.filter(direct=y).order_by('id')
         for z in level6:
             level6n.append(z)
     level7n = []
     for y in level6n:
-        level7 = UserTotal.objects.filter(direct=y).order_by('id')
+        level7 = LevelUser.objects.filter(direct=y).order_by('id')
         for z in level7:
             level7n.append(z)
     level8n = []
     for y in level7n:
-        level8 = UserTotal.objects.filter(direct=y).order_by('id')
+        level8 = LevelUser.objects.filter(direct=y).order_by('id')
         for z in level8:
             level8n.append(z)
+    level9n = []
+    for y in level8n:
+        level9 = LevelUser.objects.filter(direct=y).order_by('id')
+        for z in level9:
+            level9n.append(z)
+    level10n = []
+    for y in level9n:
+        level10 = LevelUser.objects.filter(direct=y).order_by('id')
+        for z in level10:
+            level10n.append(z)
+    level11n = []
+    for y in level10n:
+        level11 = LevelUser.objects.filter(direct=y).order_by('id')
+        for z in level11:
+            level11n.append(z)
+    level12n = []
+    for y in level11n:
+        level12 = LevelUser.objects.filter(direct=y).order_by('id')
+        for z in level12:
+            level12n.append(z)
+    level13n = []
+    for y in level12n:
+        level13 = LevelUser.objects.filter(direct=y).order_by('id')
+        for z in level13:
+            level13n.append(z)
+    level14n = []
+    for y in level13n:
+        level14 = LevelUser.objects.filter(direct=y).order_by('id')
+        for z in level14:
+            level14n.append(z)
+    level15n = []
+    for y in level14n:
+        level15 = LevelUser.objects.filter(direct=y).order_by('id')
+        for z in level15:
+            level15n.append(z)
+    level16n = []
+    for y in level15n:
+        level16 = LevelUser.objects.filter(direct=y).order_by('id')
+        for z in level16:
+            level16n.append(z)
+    level17n = []
+    for y in level16n:
+        level17 = LevelUser.objects.filter(direct=y).order_by('id')
+        for z in level17:
+            level17n.append(z)
+    level18n = []
+    for y in level17n:
+        level18 = LevelUser.objects.filter(direct=y).order_by('id')
+        for z in level18:
+            level18n.append(z)
+    level19n = []
+    for y in level18n:
+        level19 = LevelUser.objects.filter(direct=y).order_by('id')
+        for z in level19:
+            level19n.append(z)
+    level20n = []
+    for y in level19n:
+        level20 = LevelUser.objects.filter(direct=y).order_by('id')
+        for z in level10:
+            level20n.append(z)
 
-    all_levels = [level1n, level2n, level3n, level4n, level5n, level6n, level7n, level8n]
+    all_levels = [
+        level1n,
+    level2n,
+    level3n,
+    level4n,
+    level5n,
+    level6n,
+    level7n,
+    level8n,
+    level9n,
+    level10n,
+    level11n,
+    level12n,
+    level13n,
+    level14n,
+    level15n,
+    level16n,
+    level17n,
+    level18n,
+    level19n,
+    level20n]
     all_users = level1n
     counting = {}
     level = 0
     for a in all_levels:
-        level += 1
+        level += 1 
         counting['{}'.format(level)] = len(a)
 
     levels = {  
-                'level1': 20/100,  
-                'level2': 10/100, 
-                'level3': 8/100, 
-                'level4': 6/100, 
-                'level5': 4/100, 
-                'level6': 2/100, 
-                'level7': 2/100, 
-                'level8': 8/100,  
+                'level1': 1/100,  
+                'level2': 1/100, 
+                'level3': 0.75/100, 
+                'level4': 0.5/100, 
+                'level5': 0.25/100, 
+                'level6': 0.25/100, 
+                'level7': 0.25/100, 
+                'level8': 0.25/100,
+                'level9': 0.25/100,
+                'level10': 0.25/100 
                 }
 
     business = {}
@@ -112,81 +194,127 @@ def leveltree(request, user, level):
         # business['{}'.format(level)] = b*levels['level{}'.format(level)]
         business['{}'.format(level)] = b
 
-    l1 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=user.username) and Q(comment__icontains='level 1', user_id=user.username)).exclude(comment__icontains='not')
-    l2 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=user.username) and Q(comment__icontains='level 2', user_id=user.username)).exclude(comment__icontains='not')
-    l3 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=user.username) and Q(comment__icontains='level 3', user_id=user.username)).exclude(comment__icontains='not')
-    l4 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=user.username) and Q(comment__icontains='level 4', user_id=user.username)).exclude(comment__icontains='not')
-    l5 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=user.username) and Q(comment__icontains='level 5', user_id=user.username)).exclude(comment__icontains='not')
-    l6 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=user.username) and Q(comment__icontains='level 6', user_id=user.username)).exclude(comment__icontains='not')
-    l7 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=user.username) and Q(comment__icontains='level 7', user_id=user.username)).exclude(comment__icontains='not')
-    l8 = WalletHistory.objects.filter(Q(comment__icontains='Upgrade', user_id=user.username) and Q(comment__icontains='level 8', user_id=user.username)).exclude(comment__icontains='not')
-    l1c = 0
-    for x in l1:
-        l1c += x.amount
-    l2c = 0
-    for x in l2:
-        l2c += x.amount
-    l3c = 0
-    for x in l3:
-        l3c += x.amount
-    l4c = 0
-    for x in l4:
-        l4c += x.amount
-    l5c = 0
-    for x in l5:
-        l5c += x.amount
-    l6c = 0
-    for x in l6:
-        l6c += x.amount
-    l7c = 0
-    for x in l7:
-        l7c += x.amount
-    l8c = 0
-    for x in l8:
-        l8c += x.amount
-
-    lc = [0, l1c, l2c, l3c, l4c, l5c, l6c, l7c, l8c]
-    level1i = UserTotal.objects.filter(direct=user.username, active=True).order_by('id')
+    level1i = LevelUser.objects.filter(direct=user.username, active=True).order_by('id')
     level1ni = []
     for x in level1i:
         level1ni.append(x)
     level2ni = []
     for y in level1n:
-        level2i = UserTotal.objects.filter(direct=y, active=True).order_by('id')
+        level2i = LevelUser.objects.filter(direct=y, active=True).order_by('id')
         for z in level2i:
             level2ni.append(z)
     level3ni = []
     for y in level2n:
-        level3i = UserTotal.objects.filter(direct=y, active=True).order_by('id')
+        level3i = LevelUser.objects.filter(direct=y, active=True).order_by('id')
         for z in level3i:
             level3ni.append(z)
     level4ni = []
     for y in level3n:
-        level4i = UserTotal.objects.filter(direct=y, active=True).order_by('id')
+        level4i = LevelUser.objects.filter(direct=y, active=True).order_by('id')
         for z in level4i:
             level4ni.append(z)
     level5ni = []
     for y in level4n:
-        level5i = UserTotal.objects.filter(direct=y, active=True).order_by('id')
+        level5i = LevelUser.objects.filter(direct=y, active=True).order_by('id')
         for z in level5i:
             level5ni.append(z)
     level6ni = []
     for y in level5n:
-        level6i = UserTotal.objects.filter(direct=y, active=True).order_by('id')
+        level6i = LevelUser.objects.filter(direct=y, active=True).order_by('id')
         for z in level6i:
             level6ni.append(z)
     level7ni = []
     for y in level6n:
-        level7i = UserTotal.objects.filter(direct=y, active=True).order_by('id')
+        level7i = LevelUser.objects.filter(direct=y, active=True).order_by('id')
         for z in level7i:
             level7ni.append(z)
     level8ni = []
     for y in level7n:
-        level8i = UserTotal.objects.filter(direct=y, active=True).order_by('id')
+        level8i = LevelUser.objects.filter(direct=y, active=True).order_by('id')
         for z in level8i:
             level8ni.append(z)
+    level9ni = []
+    for y in level8n:
+        level9i = LevelUser.objects.filter(direct=y, active=True).order_by('id')
+        for z in level9i:
+            level9ni.append(z)
+    level10ni = []
+    for y in level9n:
+        level10i = LevelUser.objects.filter(direct=y, active=True).order_by('id')
+        for z in level10i:
+            level10ni.append(z)
+    level11ni = []
+    for y in level10n:
+        level11i = LevelUser.objects.filter(direct=y, active=True).order_by('id')
+        for z in level11i:
+            level11ni.append(z)
+    level12ni = []
+    for y in level11n:
+        level12i= LevelUser.objects.filter(direct=y, active=True).order_by('id')
+        for z in level12:
+            level12ni.append(z)
+    level13ni = []
+    for y in level12n:
+        level13i = LevelUser.objects.filter(direct=y, active=True).order_by('id')
+        for z in level13i:
+            level13ni.append(z)
+    level14ni = []
+    for y in level13n:
+        level14i = LevelUser.objects.filter(direct=y, active=True).order_by('id')
+        for z in level14i:
+            level14ni.append(z)
+    level15ni = []
+    for y in level14n:
+        level15i = LevelUser.objects.filter(direct=y, active=True).order_by('id')
+        for z in level15i:
+            level15ni.append(z)
+    level16ni = []
+    for y in level15n:
+        level16i = LevelUser.objects.filter(direct=y, active=True).order_by('id')
+        for z in level16i:
+            level16ni.append(z)
+    level17ni = []
+    for y in level16n:
+        level17i = LevelUser.objects.filter(direct=y, active=True).order_by('id')
+        for z in level17i:
+            level17ni.append(z)
+    level18ni = []
+    for y in level17n:
+        level18i = LevelUser.objects.filter(direct=y, active=True).order_by('id')
+        for z in level18i:
+            level18ni.append(z)
+    level19ni = []
+    for y in level18n:
+        level19i = LevelUser.objects.filter(direct=y, active=True).order_by('id')
+        for z in level19i:
+            level19ni.append(z)
+    level20ni = []
+    for y in level19n:
+        level20i = LevelUser.objects.filter(direct=y, active=True).order_by('id')
+        for z in level10i:
+            level20ni.append(z)
 
-    all_levelsi = [level1ni, level2ni, level3ni, level4ni, level5ni, level6ni, level7ni, level8ni]
+    all_levelsi = [
+        level1ni,
+        level2ni,
+        level3ni,
+        level4ni,
+        level5ni,
+        level6ni,
+        level7ni,
+        level8ni,
+        level9ni,
+        level10ni,
+        level11ni,
+        level12ni,
+        level13ni,
+        level14ni,
+        level15ni,
+        level16ni,
+        level17ni,
+        level18ni,
+        level19ni,
+        level20ni]
     all_usersi = level1ni
     countingi = {}
     leveli = 0
@@ -258,7 +386,123 @@ def leveltree(request, user, level):
             level8nu.append(user)
         except Exception as e:
             pass
-    all_ = [zip(level2n, level2nu), zip(level3n, level3nu), zip(level4n, level4nu), zip(level5n, level5nu), zip(level6n, level6nu), zip(level7n, level7nu), zip(level8n, level8nu),]
+    level9n = level9n
+    level9nu = []
+    for u in level9n:
+        try:
+            user = User.objects.get(username=u.user)
+            level9nu.append(user)
+        except Exception as e:
+            pass
+    level10n = level10n
+    level10nu = []
+    for u in level10n:
+        try:
+            user = User.objects.get(username=u.user)
+            level10nu.append(user)
+        except Exception as e:
+            pass
+    level11n = level11n
+    level11nu = []
+    for u in level10n:
+        try:
+            user = User.objects.get(username=u.user)
+            level11nu.append(user)
+        except Exception as e:
+            pass
+    level12n = level12n
+    level12nu = []
+    for u in level12n:
+        try:
+            user = User.objects.get(username=u.user)
+            level12nu.append(user)
+        except Exception as e:
+            pass
+    level13n = level13n
+    level13nu = []
+    for u in level13n:
+        try:
+            user = User.objects.get(username=u.user)
+            level13nu.append(user)
+        except Exception as e:
+            pass
+    level14n = level14n
+    level14nu = []
+    for u in level14n:
+        try:
+            user = User.objects.get(username=u.user)
+            level14nu.append(user)
+        except Exception as e:
+            pass
+    level15n = level15n
+    level15nu = []
+    for u in level15n:
+        try:
+            user = User.objects.get(username=u.user)
+            level15nu.append(user)
+        except Exception as e:
+            pass
+    level16n = level16n
+    level16nu = []
+    for u in level16n:
+        try:
+            user = User.objects.get(username=u.user)
+            level16nu.append(user)
+        except Exception as e:
+            pass
+    level17n = level17n
+    level17nu = []
+    for u in level17n:
+        try:
+            user = User.objects.get(username=u.user)
+            level17nu.append(user)
+        except Exception as e:
+            pass
+    level18n = level18n
+    level18nu = []
+    for u in level18n:
+        try:
+            user = User.objects.get(username=u.user)
+            level18nu.append(user)
+        except Exception as e:
+            pass
+    level19n = level19n
+    level19nu = []
+    for u in level19n:
+        try:
+            user = User.objects.get(username=u.user)
+            level19nu.append(user)
+        except Exception as e:
+            pass
+    level20n = level20n
+    level20nu = []
+    for u in level20n:
+        try:
+            user = User.objects.get(username=u.user)
+            level20nu.append(user)
+        except Exception as e:
+            pass
+    all_ = [
+        zip(level2n, level2nu),
+        zip(level3n, level3nu),
+        zip(level4n, level4nu),
+        zip(level5n, level5nu),
+        zip(level6n, level6nu),
+        zip(level7n, level7nu),
+        zip(level8n, level8nu),
+        zip(level9n, level9nu),
+        zip(level10n, level10nu),
+        zip(level11n, level11nu),
+        zip(level12n, level12nu),
+        zip(level13n, level13nu),
+        zip(level14n, level14nu),
+        zip(level15n, level15nu),
+        zip(level16n, level16nu),
+        zip(level17n, level17nu),
+        zip(level18n, level18nu),
+        zip(level19n, level19nu),
+        zip(level20n, level20nu),
+        ]
     user_listi = []
     for u in all_usersi:
         try:
@@ -267,7 +511,7 @@ def leveltree(request, user, level):
         except Exception as e:
             pass
 
-    return render(request, 'level/tree.html', {'lll': lll, 'all': all_, 'lc': lc, 'counting': counting, 'directs': directs, 'business': business, 'countingi': countingi, 'user_':user, 'user_list': zip(user_list, all_users), 'user_listi':user_listi, 's': s,})
+    return render(request, 'level/tree.html', {'lll': lll, 'all': all_, 'counting': counting, 'directs': directs, 'business': business, 'countingi': countingi, 'user_':user, 'user_list': zip(user_list, all_users), 'user_listi':user_listi, 's': s,})
 
 @login_required
 def leveljoin(request):
