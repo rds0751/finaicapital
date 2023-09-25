@@ -185,19 +185,6 @@
                           <p>{{ message }}</p>
                       </div>
                     </div>
-                    <div class="mdc-layout-grid__cell--span-6">
-                    <div>
-                      <form class="template-demo" method="POST" action="/level/payment/" enctype="multipart/form-data">{% csrf_token %}
-                        <h5>Add Money to Service Balance</h5>
-                          <input style="width: 78%; -moz-appearance: textfield;" type="number" min="1" max="6000" name="amounta" placeholder="Amount in Dollars" class="amount">
-                          <p style="color: green;">Service Balance: $ {{ request.user.c }}</p>
-                          <button style="width: 80%" type="submit" class="btn btn-primary  w-25">
-                            Top Up Service Balance
-                          </button>
-                          </form>
-                          <p>{{ message }}</p>
-                      </div>
-                    </div>
                   </div>
                 </div>
                   </div>
