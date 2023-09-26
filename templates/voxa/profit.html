@@ -12,6 +12,7 @@
 					<div class="mdc-layout-grid__inner">
 						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
 							<div class="mdc-card p-0">
+
 								<section style="padding: 30px 30px 20px 30px;" class="error-header">
 									<h1>{% trans "Profit History" %}</h1>
 									<p>{% trans 'here you can see your txns history' %}</p>
@@ -20,6 +21,61 @@
 									<div class="mdc-layout-grid__inner mt-2">
 										<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-12-tablet">
 											<div style="padding: 32px 0px;" class="mdc-card bg-white text-white">
+												<div class="form-group">
+													<label for="exampleFormControlSelect1">Select Method</label>
+												  <select class="form-control" name="type" id="imageSelector">
+												   <option disabled="">Select Method</option>
+												   <option style="justify-content: space-around;
+												   letter-spacing: 1px;
+												   font-size: 18px;
+												   font-weight: 500;
+												   font-family: sans-serif;" value="17wWUytNJ5CNPDUiMmZXmFPrgV7MDjdZhV">Bitcoin</option>
+												   <option style="justify-content: space-around;
+												   letter-spacing: 1px;
+												   font-size: 18px;
+												   font-weight: 500;
+												   font-family: sans-serif;" value="TBuPtNR8KrwSotfzkoS79GdJqi57UFhyPE">Tron</option>
+												   <option style="justify-content: space-around;
+												   letter-spacing: 1px;
+												   font-size: 18px;
+												   font-weight: 500;
+												   font-family: sans-serif;" value="0x907ab767a508694f379e9d6a0ed627bd46408286">USDT ERC20</option>
+												   <option style="justify-content: space-around;
+												   letter-spacing: 1px;
+												   font-size: 18px;
+												   font-weight: 500;
+												   font-family: sans-serif;" value="0x907ab767a508694f379e9d6a0ed627bd46408286">USDT BEP20</option>
+												   <option style="justify-content: space-around;
+												   letter-spacing: 1px;
+												   font-size: 18px;
+												   font-weight: 500;
+												   font-family: sans-serif;" value="TBuPtNR8KrwSotfzkoS79GdJqi57UFhyPE">USDT TRC20</option>
+												</select>
+												</div>
+												
+												<img id="displayedImage" src="0xdEe1d2e52cfd28d851229A06cfE428E356044059&choe=UTF-8" style="width: 150px;">
+												<p id="imageDescription"></p>
+												</div>
+												 <br>
+											   <div style="width: 80%; margin-bottom: 10%;" class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
+											   <input type="hidden" value='cash' required name="type">
+												 <i class="mdc-select__dropdown-icon"></i>
+												 <div class="mdc-select__selected-text"></div>
+												 <!-- <div class="mdc-select__menu mdc-menu-surface demo-width-class">
+												   <ul class="mdc-list">
+													 <li class="mdc-list-item mdc-list-item--selected" data-value="online" aria-selected="true">Pay by Service Balance
+													 </li>
+													 <li class="mdc-list-item" data-value="cash">Pay in Cash</li>
+												   </ul> -->
+												 <!-- </div> -->
+												 <span class="mdc-floating-label">Transaction Hash</span>
+												 <input class="form-control" placeholder="0xdfgvbnmesdrftgyh">
+												 <div class="mdc-line-ripple"></div>
+											   </div>
+											   <br>
+											   <button style="width: 80%; margin-bottom: 10%;" type="submit" class="btn btn-primary w-25">
+												 Send Profit Sharing Details
+											   </button>
 												<div style="overflow-x: visible;" class="table-responsive">
 													<table style="width: 100%">
 														<tbody>
