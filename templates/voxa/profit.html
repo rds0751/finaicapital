@@ -12,7 +12,6 @@
 					<div class="mdc-layout-grid__inner">
 						<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
 							<div class="mdc-card p-0">
-
 								<section style="padding: 30px 30px 20px 30px;" class="error-header">
 									<h1>{% trans "Profit History" %}</h1>
 									<p>{% trans 'here you can see your txns history' %}</p>
@@ -20,7 +19,7 @@
 								<section>
 									<div class="mdc-layout-grid__inner mt-2">
 										<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-12-tablet">
-											<div style="padding: 32px 0px;" class="mdc-card bg-white text-white">
+											<div style="padding: 32px 0px;" class="mdc-card text-white">
 												<div class="form-group">
 													<label for="exampleFormControlSelect1">Select Method</label>
 												  <select class="form-control" name="type" id="imageSelector">
@@ -52,7 +51,6 @@
 												   font-family: sans-serif;" value="TBuPtNR8KrwSotfzkoS79GdJqi57UFhyPE">USDT TRC20</option>
 												</select>
 												</div>
-												
 												<img id="displayedImage" src="0xdEe1d2e52cfd28d851229A06cfE428E356044059&choe=UTF-8" style="width: 150px;">
 												<p id="imageDescription"></p>
 												</div>
@@ -61,13 +59,6 @@
 											   <input type="hidden" value='cash' required name="type">
 												 <i class="mdc-select__dropdown-icon"></i>
 												 <div class="mdc-select__selected-text"></div>
-												 <!-- <div class="mdc-select__menu mdc-menu-surface demo-width-class">
-												   <ul class="mdc-list">
-													 <li class="mdc-list-item mdc-list-item--selected" data-value="online" aria-selected="true">Pay by Service Balance
-													 </li>
-													 <li class="mdc-list-item" data-value="cash">Pay in Cash</li>
-												   </ul> -->
-												 <!-- </div> -->
 												 <span class="mdc-floating-label">Transaction Hash</span>
 												 <input class="form-control" placeholder="0xdfgvbnmesdrftgyh">
 												 <div class="mdc-line-ripple"></div>
@@ -80,41 +71,45 @@
 													<table style="width: 100%">
 														<tbody>
 															{% for history in histories %}
-															{% if history.type == 'hidden' %}
-															{% else %}
-															<tr>
-																<td style="padding-left: 20px;">
-																	<p style="color: black; font-size: 10px;">
-																	{{ history.comment }}</p>
-																	<p style="color: grey; font-size: 8px;">{{ history.created_at }}</p>
-																</td>
-																<td style="{% if history.type == 'credit' %}color: green;{% else %}color: red;{% endif %} font-size: 10px; padding-right: 20px; float: right;" ><strong>{% if history.type == 'credit' %}+{% else %}-{% endif %}  ${{ history.amount|floatformat:2 }}</strong></td>
-															</tr>
-															{% endif %}
+																{% if history.type == 'hidden' %}
+																{% else %}
+																	<tr>
+																		<td style="padding-left: 20px;">
+																			<p style="color: black; font-size: 10px;">
+																			{{ history.comment }}</p>
+																			<p style="color: grey; font-size: 8px;">{{ history.created_at }}</p>
+																		</td>
+																		<td style="{% if history.type == 'credit' %}color: green;{% else %}color: red;{% endif %} font-size: 10px; padding-right: 20px; float: right;" >
+																			<strong>{% if history.type == 'credit' %}+{% else %}-{% endif %}  ${{ history.amount|floatformat:2 }}</strong>
+																		</td>
+																	</tr>
+																{% endif %}
 															{% endfor %}
 														</tbody>
 													</table>
 													<div style="padding-left: 10px;" class="template-demo">
 														{% for pg in page_range %}
-														{% if histories.number == pg %}
-														<a href="?page={{pg}}" class="btn btn-primary  icon-button filled-button--success">
-															{{pg}}
-														</a>
-														{% else %}
-														<a href="?page={{pg}}" class="btn btn-primary  icon-button filled-button--primary">{{pg}}</a>
-														{% endif %}
+															{% if histories.number == pg %}
+																<a href="?page={{pg}}" class="btn btn-primary  icon-button filled-button--success">
+																	{{pg}}
+																</a>
+															{% else %}
+																<a href="?page={{pg}}" class="btn btn-primary  icon-button filled-button--primary">{{pg}}</a>
+															{% endif %}
 														{% endfor %}
 													</div>
 												</div>
 											</div>
 											<div>
 												<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-												<ins class="adsbygoogle"
-												style="display:block"
-												data-ad-format="fluid"
-												data-ad-layout-key="-6t+ed+2i-1n-4w"
-												data-ad-client="ca-pub-2476399156226109"
-												data-ad-slot="6614818154"></ins>
+												<ins 
+													class="adsbygoogle"
+													style="display:block"
+													data-ad-format="fluid"
+													data-ad-layout-key="-6t+ed+2i-1n-4w"
+													data-ad-client="ca-pub-2476399156226109"
+													data-ad-slot="6614818154">
+												</ins>
 												<script>
 													(adsbygoogle = window.adsbygoogle || []).push({});
 												</script>
@@ -130,4 +125,26 @@
 		</div>
 	</div>
 </div>
+<script>
+	// Get references to the select, image, and paragraph elements
+	const imageSelector = document.getElementById("imageSelector");
+	const displayedImage = document.getElementById("displayedImage");
+	const imageDescription = document.getElementById("imageDescription");
+  
+	// Add an event listener to the select element
+	imageSelector.addEventListener("change", function() {
+		// Get the selected option's value
+		const selectedOption = imageSelector.value;
+  
+		// Set the src attribute of the image to the selected option's value
+		displayedImage.src = `https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=${selectedOption}`;
+  
+		// Set the paragraph's text to display the selected option's value
+		imageDescription.textContent = `${selectedOption}`;
+	});
+	// Initialize the image and paragraph based on the initial select option
+	const initialOption = imageSelector.value;
+	displayedImage.src = `https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=${initialOption}`;
+	imageDescription.textContent = `${initialOption}`;
+  </script>  
 {% endblock content %}
