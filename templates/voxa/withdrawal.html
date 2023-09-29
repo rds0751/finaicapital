@@ -18,11 +18,9 @@
           <div class="mdc-layout-grid__inner">
                   <div style="border-right: 1px dotted;" class="row stretch-card mb-3">
                     <div>
-                      {% widthratio request.user.wallet|add:request.user.pool_wallet 1 10 as c %}
-                      {% widthratio request.user.wallet|add:request.user.pool_wallet 1 85 as inr %}
-                      <h6>Available Balance: $ {{ request.user.wallet|add:request.user.pool_wallet }}</h6>
-                      <h6>Available Balance: BNXG {{ c }}</h6>
-                      <h6>Available Balance: INR {{ inr }}</h6>
+                      {% widthratio request.user.wallet 1 10 as c %}
+                      {% widthratio request.user.wallet 1 85 as inr %}
+                      <h6>Available Balance: $ {{ request.user.wallet }}</h6>
                     <div class="row">
                     <div class="col">
 

@@ -386,8 +386,8 @@ def activate(user, amount):
                     print('outside')
                 level = level + 1
             
-            model, created = UserTotal.objects.get_or_create(user=userid.username)
-            model, created = UserTotal.objects.get_or_create(user=userid.username)
+            model, created = UserTotal.objects.get_or_create(user=userid.username, level=levelp, active=True, left_months = levelp.expiration_period)
+            model, created = UserTotal.objects.get_or_create(user=userid.username, level=levelp, active=True, left_months = levelp.expiration_period)
             model.user = userid.username
             model.level = levelp
             model.active = True

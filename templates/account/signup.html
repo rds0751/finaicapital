@@ -81,26 +81,27 @@
 </section>
 
 
-          <script>
-              $("#id_username").change(function () {
-                var username = $(this).val();
+<script>
+    $("#id_username").change(function () {
+      var username = $(this).val();
+      console.log(username);
 
-                $.ajax({
-                  url: '/users/ajax/validate_username/',
-                  data: {
-                    'username': username
-                  },
-                  dataType: 'json',
-                  success: function (data) {
-                    if (true) {
-                      document.getElementById("user_name").value = data.is_taken;
-                    }
-                  }
-                });
+      $.ajax({
+        url: '/users/ajax/validate_username/',
+        data: {
+          'username': username
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (true) {
+            document.getElementById("user_name").value = data.is_taken;
+          }
+        }
+      });
 
-              });
-            </script>
-          {% endblock %}
+    });
+  </script>
+{% endblock %}
 
 
 
