@@ -32,6 +32,7 @@ class UserTotalAdmin(ImportExportModelAdmin):
     search_fields = ('user_id', )
 
 
+
 admin.site.register(Activation, LevelAdmin)
 admin.site.register(LevelIncomeSettings, LevelIncomeSettingAdmin)
 admin.site.register(UserTotal, UserTotalAdmin)

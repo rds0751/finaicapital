@@ -26,20 +26,6 @@ class LevelIncomeSettings(models.Model):
     created_at = models.DateTimeField(default=timezone.now, blank=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True)
 
-class LevelUser(models.Model):
-    user = models.CharField(max_length=25, blank=True, null=True)
-    level = models.ForeignKey(LevelIncomeSettings, on_delete=models.CASCADE)
-    active = models.BooleanField()
-    left_months = models.IntegerField()
-    direct = models.CharField(max_length=25, blank=True, null=True)
-    business = models.IntegerField(default=0)
-    created_at = models.DateTimeField(default=timezone.now, blank=True)
-    updated_at = models.DateTimeField(auto_now=True, blank=True)
-    activated_at = models.DateTimeField(null=True, blank=True)
-
-    def __str__(self):
-        return str(self.user)
-
 class UserTotal(models.Model):
     user = models.CharField(max_length=25, blank=True, null=True)
     level = models.ForeignKey(LevelIncomeSettings, on_delete=models.CASCADE)
