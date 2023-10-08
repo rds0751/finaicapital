@@ -16,8 +16,6 @@ class User(AbstractUser, PermissionsMixin):
     state = models.CharField(max_length=255, blank=True, null=True)
     is_superuser = models.BooleanField(blank=True, default=False)
     rank = models.CharField(max_length=44, null=True, blank=True)
-    nominee = models.CharField(max_length=155, default='blank', blank=False)
-    nominee_relation = models.CharField(max_length=155, default='blank', blank=False)
     profile_pic = models.FileField(upload_to='profile_pics/', null=True)
     otp = models.IntegerField(default='1234', null=True)
     referral = models.CharField(max_length=25, blank=True, null=True)

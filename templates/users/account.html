@@ -86,8 +86,7 @@ fileinput.addEventListener('change', function() {
 </style>
 
 <section style="padding: 30px 30px 20px 30px;" class="error-header">
-  <h1>{% trans "Bank Details" %}</h1>
-  <p>{% trans 'here you can add your Bank Details for NEFT!' %}</p>
+  <h1>{% trans "Withdraw Addresses" %}</h1>
 </section>
 <section>
   <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
@@ -115,15 +114,21 @@ fileinput.addEventListener('change', function() {
                   {{ model.mt5_account }}
                 </span>
               </p>
+              <p class="d-flex justify-content-between">
+                <span>{% trans "Tron Address" %} </span>
+                <span style="color: green">
+                  {{ model.mt5_account }}
+                </span>
+              </p>
             </div>
             <form method="post" enctype="multipart/form-data">
               {% csrf_token %}
               {{ form.errors }}
-            <div style="display: none;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
+            <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">
               <div class="mdc-text-field mdc-ripple-upgraded" style="--mdc-ripple-fg-size:141px; --mdc-ripple-fg-scale:1.77484; --mdc-ripple-fg-translate-start:26.5px, -33.5px; --mdc-ripple-fg-translate-end:47.5px, -48px;">
                 <input required type="text" value="edrftgyhu" name="name" maxlength="255" class="form-control" id="text-field-hero-input">
                 <div class="mdc-line-ripple"></div>
-                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Name According to Bank" %} </span></label>
+                <label for="text-field-hero-input" class="mdc-floating-label"><span style="font-size: .8rem;"> {% trans "Tron Address" %} </span></label>
               </div>
             </div>
             <div style="display: none;" class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop pb-4">

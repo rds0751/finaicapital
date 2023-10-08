@@ -183,7 +183,7 @@
                             <div class="iq-card-body p-0 ">
                                <div class="bg-primary p-3">
                                   <h5 class="mb-0 text-white line-height">Hello {{ request.user.name }}</h5>
-                                  <span class="text-white font-size-12">Available</span>
+                                  <span class="text-white font-size-12">UserID {{ request.user.username }} | Wallet ${{ request.user.wallet }} Available</span>
                                </div>
                                <a href="/users/profile/" class="iq-sub-card iq-bg-primary-hover">
                                   <div class="media align-items-center">
