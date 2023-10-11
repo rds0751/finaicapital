@@ -171,6 +171,21 @@ def bonus(request):
     return render(request, 'voxa/bonus.html', {})
     
 def fund(request):
+    message = ""
+    if request.method == "POST":
+        try:
+            amount = request.method.get("POST")
+            id = request.method.get('id')
+            user = User.objects.get(username=id)
+            if request.user.wallet >= float(amount):
+                user = request.user
+                user.c -= float(amount)
+                user.save()
+                user = User.objects.get(username=id)
+                user.c += float(amount)
+                user.save()
+        except Exception as e:
+            message = str(e)
     return render(request, 'voxa/fund.html', {})
     
 def level(request):
