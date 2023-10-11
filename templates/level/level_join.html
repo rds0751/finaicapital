@@ -97,8 +97,14 @@
           <div class="mdc-layout-grid__inner">
             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
               <div class="mdc-card p-0">
-                <section style="padding: 30px 30px 20px 30px;" class="error-header">
+                <section style="padding: 30px 30px 20px 30px;" class="error-header">                  
+                  {% if actp == 0 and acta == 0%}
                   <h1>{% trans "Join Plan" %}</h1>
+                  {% elif actp > 0 %}
+                  <p style="color: orange">Note: Activation is in process!</p>
+                  {% elif acta > 0 %}
+                  <h1>{% trans "Re-topup ID" %}</h1>
+                  {% endif %}
                   <p>{% trans 'here you can join our investment plan' %}</p>
                 </section>
         <div class="mdc-layout-grid">
