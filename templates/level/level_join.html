@@ -154,32 +154,28 @@
                            
                            <img id="displayedImage" src="0xdEe1d2e52cfd28d851229A06cfE428E356044059&choe=UTF-8" style="width: 150px;">
                            <p id="imageDescription"></p>
+                           <input type="text" class="form-control" id="address" value="">
                            </div>
                             <br>
-                          <div style="width: 80%; margin-bottom: 10%;" class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
+                          <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect">
                           <input type="hidden" value='cash' required name="type">
                             <i class="mdc-select__dropdown-icon"></i>
                             <div class="mdc-select__selected-text"></div>
-                            <!-- <div class="mdc-select__menu mdc-menu-surface demo-width-class">
-                              <ul class="mdc-list">
-                                <li class="mdc-list-item mdc-list-item--selected" data-value="online" aria-selected="true">Pay by Service Balance
-                                </li>
-                                <li class="mdc-list-item" data-value="cash">Pay in Cash</li>
-                              </ul> -->
-                            <!-- </div> -->
                             <span class="mdc-floating-label">Transaction Hash</span>
                             <input class="form-control" placeholder="0xdfgvbnmesdrftgyh">
                             <div class="mdc-line-ripple"></div>
                           </div>
                           <br>
                           {% if actp == 0 and acta == 0%}
-                          <button style="width: 80%; margin-bottom: 10%;" type="submit" class="btn btn-primary w-25">
+                          <button type="submit" class="btn btn-primary">
                             Purchase Now
                           </button>
                           {% elif actp > 0 %}
                           <p style="color: orange">Note: Activation is in process!</p>
                           {% elif acta > 0 %}
-                          ID Activated
+                          <button type="submit" class="btn btn-primary">
+                            Re-topup
+                          </button>
                           {% endif %}
                           </form>
                           <p>{{ message }}</p>
@@ -213,7 +209,7 @@ $('.options li').click(function(){
   // Get references to the select, image, and paragraph elements
   const imageSelector = document.getElementById("imageSelector");
   const displayedImage = document.getElementById("displayedImage");
-  const imageDescription = document.getElementById("imageDescription");
+  const address = document.getElementById("address");
 
   // Add an event listener to the select element
   imageSelector.addEventListener("change", function() {
@@ -224,13 +220,13 @@ $('.options li').click(function(){
       displayedImage.src = `https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=${selectedOption}`;
 
       // Set the paragraph's text to display the selected option's value
-      imageDescription.textContent = `${selectedOption}`;
+      address.value = `${selectedOption}`;
   });
 
   // Initialize the image and paragraph based on the initial select option
   const initialOption = imageSelector.value;
   displayedImage.src = `https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=${initialOption}`;
-  imageDescription.textContent = `${initialOption}`;
+  address.value = `${initialOption}`;
 </script>
 {% endblock content %}
 
