@@ -13,7 +13,8 @@
              </div>
           </div>
           <div class="iq-card-body">
-             <form>
+             <form method="post">
+               {% csrf_token %}
                 <div class="form-group">
                    <label for="text">User ID</label>
                    <input type="text" class="form-control" id="email1">
@@ -26,6 +27,7 @@
                 <button type="submit" class="btn iq-bg-danger">cancle</button>
              </form>
           </div>
+          {{message}}
        </div>
     </div>
  </div>

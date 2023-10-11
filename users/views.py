@@ -184,6 +184,7 @@ def fund(request):
                 user = User.objects.get(username=id)
                 user.c += float(amount)
                 user.save()
+                message = "Amount Transfered"
         except Exception as e:
             message = str(e)
     return render(request, 'voxa/fund.html', {})
