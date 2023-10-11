@@ -271,8 +271,8 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_LOGOUT_REDIRECT_URL ="/accounts/login/"
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
-ACCOUNT_CONFIRM_EMAIL_ON_GET = False
-ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 
 LOGIN_REDIRECT_URL = '/users/'
 
@@ -280,11 +280,11 @@ LOGIN_URL = "/accounts/login/"
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'apikey'
-DEFAULT_FROM_EMAIL = 'support@ipaymatics.com'
-EMAIL_HOST_PASSWORD = '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'
+EMAIL_HOST_USER = 'voxafx'
+DEFAULT_FROM_EMAIL = 'voxafx@gmail.com'
+EMAIL_HOST_PASSWORD = 'rddj bmmx drms gdlh'
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 from datetime import timedelta
