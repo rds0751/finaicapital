@@ -5,7 +5,7 @@
 
 {% block content %}
 <div class="row">
-  <div class="col-lg-3">             
+  <div class="col-lg-6">             
     <div class="iq-card">
        <div class="iq-card-body p-0">
           <div class="row align-items-center no-gutters">
@@ -26,7 +26,7 @@
        </div>
     </div>
  </div>
- <div class="col-lg-3">             
+ <div class="col-lg-6">             
    <div class="iq-card">
       <div class="iq-card-body p-0">
          <div class="row align-items-center no-gutters">
@@ -47,7 +47,7 @@
       </div>
    </div>
 </div>
-<div class="col-lg-3">             
+<div class="col-lg-6">             
   <div class="iq-card">
      <div class="iq-card-body p-0">
         <div class="row align-items-center no-gutters">
@@ -68,7 +68,7 @@
      </div>
   </div>
 </div>
-<div class="col-lg-3">             
+<div class="col-lg-6">             
   <div class="iq-card">
      <div class="iq-card-body p-0">
         <div class="row align-items-center no-gutters">
@@ -134,7 +134,22 @@
         </div>
     </div>
 </div>
-<div class="col-lg-3 col-xl-6 col-xxl-6">
+<div class="col-sm-12 col-md-6 col-lg-3 col-xxl-2">
+    <div class="card border-0 mb-4 theme-blue bg-radial-gradient text-white">
+        <div style="height: 103px;" class="card-body bg-none">
+            <div class="row gx-2 align-items-center">
+                <div class="col-auto">
+                  <div class="rounded-circle iq-card-icon iq-bg-success"><i class="ri-exchange-dollar-fill"></i></div>
+                </div>
+                <div class="col">
+                    <h5 style="font-size: small;" class="text-muted   mb-1">Copy Trading Business</h5>
+                    <h5 class="">$ {{request.user.cbusiness}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-xl-12 col-xxl-12">
   <div class="card bg-gradient-theme-light theme-purple border-0 mb-4">
       <div class="card-body">
           <h6 class="">My Refer Link</h6>
@@ -256,7 +271,6 @@
   function myyFunction() {
     var copyText = document.getElementById("copy-to-clipboard-input");
     copyText.select();
-    copyText.setSelectionRange(0, 99999)
     document.execCommand("copy");
     alert("Copied the link: " + copyText.value);
   }
