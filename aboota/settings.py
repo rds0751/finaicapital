@@ -289,8 +289,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'voxafx'
-DEFAULT_FROM_EMAIL = 'voxafx@gmail.com'
+EMAIL_HOST_USER = 'FinAiCapital'
+DEFAULT_FROM_EMAIL = 'FinAiCapital@gmail.com'
 EMAIL_HOST_PASSWORD = 'rddj bmmx drms gdlh'
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 

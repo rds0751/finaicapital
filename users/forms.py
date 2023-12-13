@@ -52,7 +52,7 @@ class SimpleSignupForm(SignupForm):
 		plan.left_months = 0
 		plan.direct = referral
 		plan.save()
-		# subject = 'Welcome to VoxaFX Ltd..'
+		# subject = 'Welcome to FinAiCapital Ltd..'
 		# html_message = render_to_string('account/email/welcome.html', {'context': self.cleaned_data['name']})
 		# plain_message = strip_tags(html_message)
 		# from_email = 'support@VOXAmatics.com'
